@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>{% if update %}Update Teacher{% else %}Add Teacher{% endif %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 450px;
+            margin: auto;
+            padding: 20px 20px 30px 20px;
+            text-align: center;
+            
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+       
+        }
+        input, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+     
+        .back-link {
+            display: inline;
+            margin-top:15px;
+            color: #512da8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1{
+            margin-bottom:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{% if update %}Update Teacher{% else %}Add Teacher{% endif %}</h1>
+        <form method="POST" action="{% if update %}{{ url_for('update_teacher', id=teacher.id) }}{% else %}{{ url_for('add_teacher') }}{% endif %}">
+            
+            <input type="text" id="id" name="id" placeholder="ID" value="{{ teacher.id if teacher else '' }}" {% if update %}readonly{% endif %} required>
+
+       
+            <input type="text" id="name" name="name" placeholder="Name" value="{{ teacher.name if teacher else '' }}" required>
+
+       
+            <input type="text" id="qualification" name="qualification" placeholder="Qualification" value="{{ teacher.qualification if teacher else '' }}" required>
+
+       
+            <input type="text" id="place" name="place" placeholder="Place" value="{{ teacher.place if teacher else '' }}" required>
+
+       
+            <input type="text" id="batch" name="batch" placeholder="Batch" value="{{ teacher.batch if teacher else '' }}" required>
+
+            {% if not update %}
+                
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            {% endif %}
+
+            <button type="submit">{% if update %}Update{% else %}Add{% endif %} Teacher</button>
+            <a href="{{ url_for('principal_dashboard') }}" class="back-link">Back to Dashboard</a>
+        </form>
+    </div>
+</body>
+</html>
