@@ -1,36 +1,31 @@
-Student Management System
-A web-based application built with Flask and SQLite that manages students, teachers, and principals in a school environment. It supports role-based authentication and allows different levels of data access and manipulation based on user roles.
+# 🏫 Student Management System
 
-🚀 Features
-Role-based Login System:
+A web-based Student Management System built using **Flask** and **SQLite**. This application provides secure, role-based access for principals, teachers, and students to manage and view academic information.
 
-Principal can view, add, update, and delete students and teachers.
+## 🚀 Features
 
-Teachers can view and manage students in their assigned batch.
+- **Role-Based Authentication**:
+  - 🔑 **Principal**: Add, update, delete, and view all students and teachers.
+  - 👩‍🏫 **Teacher**: Add, update, delete, and view students in their assigned batch.
+  - 👨‍🎓 **Student**: View personal academic information only.
 
-Students can log in and view their personal academic data.
+- **Dashboards**:
+  - Principal Dashboard
+  - Teacher Dashboard (with filtered student data)
+  - Student Dashboard
 
-Functional Dashboards:
+- **Data Operations**:
+  - Add/Update/Delete Teachers
+  - Add/Update/Delete Students
+  - View all users (for principal)
 
-Principal Dashboard
+## 🧰 Tech Stack
 
-Teacher Dashboard (filtered by batch)
+- **Backend**: Python (Flask)
+- **Database**: SQLite (WAL mode enabled)
+- **Frontend**: HTML + Jinja Templates
+- **Session Management**: Flask sessions
 
-Student Dashboard
+## 📁 Project Structure
 
-Data Management:
-
-Add, update, delete teachers
-
-Add, update, delete students
-
-View lists of all teachers and students (for Principal only)
-
-🧰 Tech Stack
-Backend: Python, Flask
-
-Database: SQLite (with WAL mode for better concurrency)
-
-Frontend: HTML, Jinja2 Templates
-
-Authentication: Session-based login
+student-management-system/ │ ├── templates/ │ ├── login.html │ ├── principal_dashboard.html │ ├── teacher_dashboard.html │ ├── student_dashboard.html │ ├── add_teacher.html │ ├── add_student.html │ ├── view_teachers.html │ └── view_students.html │ ├── static/ │ └── (Optional CSS or JS files) │ ├── school_management_demo.db # SQLite Database ├── app.py # Main Flask App └── README.md # Project Documentation
